@@ -1,11 +1,20 @@
 from flask import Flask
+from ouimeaux.environment import Environment
+from ouimeaux.signals import statechange, receiver
+from LEDroom import boringOn, allOff
+
 app = Flask(__name__)
+
+env = Environment(on_switch)
 
 # define globals
 options = {
 	'command=on':['lights on!', boringOn()],
 	'command=off':['lights off!', allOff()]
 }
+
+def on_switch(switch):
+	print "Switch found!", switch.name
 
 
 @app.route('/state/')
@@ -19,3 +28,17 @@ def state():
 
 if __name__ == "__main__":
 	app.run(debug=True, host='0.0.0.0')
+	env.start()
+	env.discover(5)
+	switch = env.get_switch('bedroomSwitch')
+
+	@receiver(statechange, sender=switch)
+	def switch_toggle(device, **kwargs):
+		print device, kwargs['state']
+		if kwargs['state'] == 1:
+			boringOn()
+
+		else:
+			allOff()
+
+	env.wait()
