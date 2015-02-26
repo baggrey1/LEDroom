@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
 	@receiver(statechange, sender=switch)
 	def switch_toggle(sender, **kwargs):
-		print device, kwargs['state']
+		print sender.name, kwargs['state']
 		if kwargs.get('state'):
 			boringOn()
 
