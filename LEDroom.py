@@ -1,6 +1,7 @@
 # Control neopixels from raspberry pi
 # Author: Brian Aggrey (baggrey1@gmail.com)
 
+import time
 from neopixel import *
 
 #LED strip configuration
@@ -33,8 +34,8 @@ def colorWipe(strip, color, wait_ms=50):
 		time.sleep(wait_ms/1000.0)
 
 if __name__ == '__main__':
-	strip1 = Adafruit_NeoPixel(STRIP_1_LED_COUNT, STRIP_1_GPIO_PIN, STRIP_1_LED_FREQ_HZ, STRIP_1_DMA, STRIP_1_BRIGHTNESS, STRIP_1_INVERT, STRIP_1_PWM_CHANNEL)
-	strip2 = Adafruit_NeoPixel(STRIP_2_LED_COUNT, STRIP_2_GPIO_PIN, STRIP_2_LED_FREQ_HZ, STRIP_2_DMA, STRIP_2_BRIGHTNESS, STRIP_2_INVERT, STRIP_2_PWM_CHANNEL)
+	strip1 = Adafruit_NeoPixel(STRIP_1_LED_COUNT, STRIP_1_GPIO_PIN, STRIP_1_LED_FREQ_HZ, STRIP_1_DMA, STRIP_1_INVERT, STRIP_1_BRIGHTNESS, STRIP_1_PWM_CHANNEL)
+	strip2 = Adafruit_NeoPixel(STRIP_2_LED_COUNT, STRIP_2_GPIO_PIN, STRIP_2_LED_FREQ_HZ, STRIP_2_DMA, STRIP_2_INVERT, STRIP_2_BRIGHTNESS, STRIP_2_PWM_CHANNEL)
 
 	strip1.begin()
 	strip2.begin()
