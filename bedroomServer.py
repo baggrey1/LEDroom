@@ -5,17 +5,13 @@ from LEDroom import boringOn, allOff
 
 app = Flask(__name__)
 
-env = Environment(on_switch)
+env = Environment()
 
 # define globals
 options = {
 	'command=on':['lights on!', boringOn()],
 	'command=off':['lights off!', allOff()]
 }
-
-def on_switch(switch):
-	print "Switch found!", switch.name
-
 
 @app.route('/state/')
 def state():
