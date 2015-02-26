@@ -8,10 +8,6 @@ app = Flask(__name__)
 env = Environment()
 
 # define globals
-options = {
-	'command=on':['lights on!', boringOn()],
-	'command=off':['lights off!', allOff()]
-}
 
 @app.route('/state/')
 def state():
@@ -23,15 +19,15 @@ def state():
 	return input_list[0], 200
 
 if __name__ == "__main__":
-	app.run(debug=True, host='0.0.0.0')
+#	app.run(debug=True, host='0.0.0.0')
 	env.start()
 	env.discover(5)
 	switch = env.get_switch('bedroomSwitch')
 
 	@receiver(statechange, sender=switch)
-	def switch_toggle(device, **kwargs):
+	def switch_toggle(sender, **kwargs):
 		print device, kwargs['state']
-		if kwargs['state'] == 1:
+		if kwargs.get('state'):
 			boringOn()
 
 		else:
