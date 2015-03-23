@@ -11,7 +11,7 @@ from ouimeaux.signals import statechange, receiver
 bedroomURL = 'http://192.168.1.2:5000'
 
 if __name__ == "__main__":
-	env = Environment
+	env = Environment.env()
 	env.start()
 	env.discover(5)
 	switch = env.get_switch('bedroomSwitch')
