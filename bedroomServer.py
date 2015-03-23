@@ -3,8 +3,6 @@ from LEDroom import boringOn, allOff
 
 app = Flask(__name__)
 
-env = Environment()
-
 # define globals
 options = {
 	'command=on':['Lights on!', boringOn()],
