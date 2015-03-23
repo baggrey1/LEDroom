@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from LEDroom import boringOn, allOff
 
 app = Flask(__name__)
