@@ -15,6 +15,7 @@ def state():
 	command = request.query_string
 	input_list = options.get(command)
 	input_list[1]
+	boringOn()
 
 	return input_list[0], 200
 
