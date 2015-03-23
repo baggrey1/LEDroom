@@ -9,7 +9,7 @@ from ouimeaux.signals import statechange, receiver
 
 # define globals
 bedroomURL = 'http://192.168.1.2:5000'
-env = Environment
+env = Environment()
 
 if __name__ == "__main__":
 	env.start()
