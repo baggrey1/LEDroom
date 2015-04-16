@@ -58,3 +58,18 @@ def allOff():
 	# update strips
 	strip1.show()
 	strip2.show()
+
+def setColor(red,green,blue):
+	# this function sets color for all LEDS
+	color = Color(red, green, blue)
+
+	# set pixel states for both strips
+	for i in range(strip1.numPixels()):
+		strip1.setPixelColor(i,color)
+
+	for i in range(strip2.numPixels()):
+		strip2.setPixelColor(i,color)
+
+	#update strips
+	strip1.show()
+	strip2.show()
