@@ -25,7 +25,7 @@ def state():
 def slider_connect():
     emit('my response', {'data': 'Connected!'})
 
-@sockteio.on('json', namespace='/slider')
+@socketio.on('json', namespace='/slider')
 def set_colors(colors):
 	setColor(colors[0][intensity],colors[1][intensity],colors[2][intensity])	
 
