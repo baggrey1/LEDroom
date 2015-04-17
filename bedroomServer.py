@@ -24,6 +24,7 @@ def state():
 @socketio.on('connect', namespace='/slider')
 def slider_connect():
     emit('my response', {'data': 'Connected!'})
+    print('Client connected')
 
 @socketio.on('json', namespace='/slider')
 def set_colors(colors):
@@ -34,4 +35,4 @@ def slider_disconnect():
     print('Client disconnected')
 
 if __name__ == "__main__":
-	socketio.run(app,debug=True, host='0.0.0.0')
+	socketio.run(app, host='0.0.0.0')
