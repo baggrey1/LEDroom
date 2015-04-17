@@ -1,9 +1,11 @@
 from flask import Flask, request
 from flask.ext.socketio import SocketIO
 from LEDroom import boringOn, allOff, setColor
+from flask.ext.cors import CORS
 
 app = Flask(__name__)
 socketio = SocketIO(app)
+cors = CORS(app)
 
 # define globals
 options = {
