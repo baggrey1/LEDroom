@@ -28,9 +28,9 @@ def slider_connect():
 
 @socketio.on('json')
 def set_colors(colors):
-	red = colors[0][intensity]
-	green = colors[1][intensity]
-	blue = colors[2][intensity]
+	red = colors[0].get(intensity)
+	green = colors[1].get(intensity)
+	blue = colors[2].get(intensity)
 	setColor(red,green,blue)
 	print('changed red value: '+str(red))
 
