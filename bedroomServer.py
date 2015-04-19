@@ -32,6 +32,7 @@ def set_colors(redJSON):
 	green = 48
 	blue = 48
 	setColor(red,green,blue)
+	print('changed red value: '+str(redJSON))
 
 @socketio.on('disconnect')
 def slider_disconnect():
