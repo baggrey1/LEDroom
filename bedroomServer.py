@@ -28,9 +28,9 @@ def slider_connect():
 
 @socketio.on('json')
 def set_colors(colors):
-	red = colors[0][intensity]
-	green = colors[0][intensity]
-	blue = colors[0][intensity]
+	red = colors[intensity]
+	green = 48;
+	blue = 48;
 	setColor(red,green,blue)	
 
 @socketio.on('disconnect')
