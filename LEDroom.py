@@ -8,7 +8,7 @@ STRIP_1_LED_COUNT         = 410
 STRIP_1_GPIO_PIN          = 18
 STRIP_1_LED_FREQ_HZ       = 800000
 STRIP_1_DMA               = 5
-STRIP_1_BRIGHTNESS        = 255
+STRIP_1_BRIGHTNESS        = 128
 STRIP_1_INVERT            = False
 STRIP_1_PWM_CHANNEL       = 0
 
@@ -16,7 +16,7 @@ STRIP_2_LED_COUNT         = 460
 STRIP_2_GPIO_PIN          = 19
 STRIP_2_LED_FREQ_HZ       = 800000
 STRIP_2_DMA               = 5
-STRIP_2_BRIGHTNESS        = 255
+STRIP_2_BRIGHTNESS        = 128
 STRIP_2_INVERT            = False
 STRIP_2_PWM_CHANNEL       = 1
 
@@ -31,7 +31,7 @@ def boringOn():
 	strip2.begin()
 
 	# define color
-	color = Color(255, 128, 255)
+	color = Color(255, 255, 255)
 
 	# set pixel states for both strips
 	for i in range(strip1.numPixels()):
