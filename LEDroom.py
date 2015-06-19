@@ -87,15 +87,19 @@ def fadeOn(storedColor):
 	fadeSteps = int(fadeDuration/fadeResolution)
 
 	# initialize color step:
-	colorStep = [1,1,1]
+	colorStep = {
+		'red': 1,
+		'green': 1,
+		'blue' : 1
+	}
 
 	for i in range(1,fadeSteps):
-		for j in range(0,2):
+		for component in storedColor:
 			# set color components for step
-			colorStep[j] = storedColor[j]*fadeDuration/fadeResolution*i
+			colorStep[component] = storedColor[component]*fadeDuration/fadeResolution*i
 		
 		# instantiate color object
-		color = Color(colorStep[0], colorStep[1], colorStep[2])
+		color = Color(colorStep['red'], colorStep['green'], colorStep['blue'])
 
 		for k in range(strip1.numPixels()):
 			strip1.setPixelColor(i,color)
