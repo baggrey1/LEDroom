@@ -89,8 +89,8 @@ def fadeOn(storedColor):
 	# initialize color step:
 	colorStep = [1,1,1]
 
-	for i = 1 to fadeSteps:
-		for j = 0 to 2:
+	for i in range(1,fadeSteps):
+		for j in range(0,2):
 			# set color components for step
 			colorStep[j] = storedColor[j]*fadeDuration/fadeResolution*i
 		
