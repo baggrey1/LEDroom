@@ -82,7 +82,7 @@ def fadeOn(storedColor):
 	strip2.begin()
 
 	# set fade options in s
-	fadeDuration = 1
+	fadeDuration = .2
 	fadeResolution = .01
 	fadeSteps = int(fadeDuration/fadeResolution)
 
