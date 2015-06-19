@@ -24,6 +24,7 @@ def state():
 	input_list = options.get(command)
 	functionToCall = input_list[1]
 	functionToCall()
+	print(storedColor)
 
 	return input_list[0], 200
 
