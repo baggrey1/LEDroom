@@ -83,7 +83,7 @@ def fadeOn(storedColor):
 
 	# set fade options in s
 	fadeDuration = 1
-	fadeResolution = .05
+	fadeResolution = .01
 	fadeSteps = int(fadeDuration/fadeResolution)
 
 	# initialize color step:
@@ -103,10 +103,10 @@ def fadeOn(storedColor):
 		color = Color(colorStep['red'], colorStep['green'], colorStep['blue'])
 
 		for k in range(strip1.numPixels()):
-			strip1.setPixelColor(i,color)
+			strip1.setPixelColor(k,color)
 
 		for k in range(strip2.numPixels()):
-			strip2.setPixelColor(i,color)
+			strip2.setPixelColor(k,color)
 
 		# update strips
 		strip1.show()
