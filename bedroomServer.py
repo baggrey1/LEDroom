@@ -6,7 +6,7 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 
 # define globals
-storedColor = [0,0,0]
+storedColor = [255,255,255]
 options = {
 	'command=on':['Lights on!', fadeOn(storedColor)],
 	'command=off':['Lights out!', allOff]
