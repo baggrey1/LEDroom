@@ -6,8 +6,9 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 
 # define globals
+storedColor = [0,0,0]
 options = {
-	'command=on':['Lights on!', fadeOn],
+	'command=on':['Lights on!', fadeOn(storedColor)],
 	'command=off':['Lights out!', allOff]
 }
 
@@ -31,8 +32,8 @@ def set_colors(colors):
 	red = int(colors[0]['intensity'])
 	green = int(colors[1]['intensity'])
 	blue = int(colors[2]['intensity'])
-	setColor(red,green,blue)
-	print('changed red value: '+str(red))
+	setColor(red, green, blue)
+	storedColor = [red, green, blue]
 
 @socketio.on('disconnect')
 def slider_disconnect():
