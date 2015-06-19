@@ -2,6 +2,7 @@
 # Author: Brian Aggrey (baggrey1@gmail.com)
 
 from neopixel import *
+import time
 
 #LED strip configuration
 STRIP_1_LED_COUNT         = 410
@@ -73,3 +74,38 @@ def setColor(red,green,blue):
 	#update strips
 	strip1.show()
 	strip2.show()
+
+def fadeOn(storedColor):
+	# this function fades the lights on to the stored color
+	# initialize strips
+	strip1.begin()
+	strip2.begin()
+
+	# set fade options in s
+	fadeDuration = 1
+	fadeResolution = .05
+	fadeSteps = int(fadeDuration/fadeResolution)
+
+	# initialize color step:
+	colorStep = [1,1,1]
+
+	for i = 1 to fadeSteps:
+		for j = 0 to 2:
+			# set color components for step
+			colorStep[j] = storedColor[j]*fadeDuration/fadeResolution*i
+		
+		# instantiate color object
+		color = Color(colorStep[0], colorStep[1], colorStep[2])
+
+		for k in range(strip1.numPixels()):
+			strip1.setPixelColor(i,color)
+
+		for k in range(strip2.numPixels()):
+			strip2.setPixelColor(i,color)
+
+		# update strips
+		strip1.show()
+		strip2.show()
+
+		# wait for duration of step
+		time.sleep(fadeResolution)

@@ -1,13 +1,13 @@
 from flask import Flask, request
 from flask.ext.socketio import SocketIO
-from LEDroom import boringOn, allOff, setColor
+from LEDroom import boringOn, allOff, setColor, fadeOn
 
 app = Flask(__name__)
 socketio = SocketIO(app)
 
 # define globals
 options = {
-	'command=on':['Lights on!', boringOn],
+	'command=on':['Lights on!', fadeOn],
 	'command=off':['Lights out!', allOff]
 }
 
