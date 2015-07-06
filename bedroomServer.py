@@ -18,7 +18,7 @@ options = {
 }
 
 @app.route('/state/')
-def state(storedColor):
+def state():
 	# This route accepts a string as a GET param and turns lights on/off
 	command = request.query_string
 	input_list = options.get(command)
@@ -26,7 +26,7 @@ def state(storedColor):
 	functionToCall()
 	print(storedColor)
 
-	return input_list[0], 200, storedColor
+	return input_list[0], 200
 
 @socketio.on('connect')
 def slider_connect():
@@ -44,10 +44,11 @@ def set_colors(colors):
 		'green':green,
 		'blue': blue
 	}
+	return storedColor
 
 @socketio.on('disconnect')
 def slider_disconnect():
     print('Client disconnected')
 
 if __name__ == "__main__":
-	socketio.run(app, host='0.0.0.0', debug=True)
+	socketio.run(app, host='0.0.0.0')
