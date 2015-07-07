@@ -33,7 +33,8 @@ def boringOn():
 
 	# define color
 	with open('last_color.json') as infile:    
-    	storedColor = json.load(infile)
+		storedColor = json.load(infile)
+
 	color = Color(storedColor['red'], storedColor['green'], storedColor['blue'])
 
 	# set pixel states for both strips
