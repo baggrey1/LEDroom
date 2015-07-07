@@ -2,7 +2,7 @@
 # Author: Brian Aggrey (baggrey1@gmail.com)
 
 from neopixel import *
-import time
+import time, json
 
 #LED strip configuration
 STRIP_1_LED_COUNT         = 410
@@ -32,7 +32,9 @@ def boringOn():
 	strip2.begin()
 
 	# define color
-	color = Color(200, 160, 80)
+	with open('last_color.json') as infile:    
+    	storedColor = json.load(infile)
+	color = Color(storedColor['red'], storedColor['green'], storedColor['blue'])
 
 	# set pixel states for both strips
 	for i in range(strip1.numPixels()):
@@ -75,7 +77,7 @@ def setColor(red,green,blue):
 	strip1.show()
 	strip2.show()
 
-def fadeOn(storedColor):
+def fadeOn():
 	# this function fades the lights on to the stored color
 	# initialize strips
 	strip1.begin()
