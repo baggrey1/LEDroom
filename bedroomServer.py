@@ -1,16 +1,10 @@
 from flask import Flask, request
 from flask.ext.socketio import SocketIO
 from LEDroom import boringOn, allOff, setColor, fadeOn
+import json
 
 app = Flask(__name__)
 socketio = SocketIO(app)
-
-# define globals
-storedColor = {
-	'red': 255,
-	'green': 255,
-	'blue':255
-}
 
 options = {
 	'command=on':['Lights on!', boringOn],
@@ -44,7 +38,8 @@ def set_colors(colors):
 		'green':green,
 		'blue': blue
 	}
-	return storedColor
+	with open('last_color.txt', 'w') as outfile:
+		json.dump(storedColor, outfile)
 
 @socketio.on('disconnect')
 def slider_disconnect():
