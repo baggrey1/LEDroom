@@ -13,7 +13,7 @@ storedColor = {
 }
 
 options = {
-	'command=on':['Lights on!', fadeOn(storedColor)],
+	'command=on':['Lights on!', boringOn],
 	'command=off':['Lights out!', allOff]
 }
 

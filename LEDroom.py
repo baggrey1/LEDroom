@@ -32,7 +32,7 @@ def boringOn():
 	strip2.begin()
 
 	# define color
-	color = Color(255, 255, 255)
+	color = Color(200, 160, 80)
 
 	# set pixel states for both strips
 	for i in range(strip1.numPixels()):
