@@ -18,7 +18,7 @@ def state():
 	input_list = options.get(command)
 	# Read previous command from text file
 	with open('last_command.txt') as infile:    
-		last_command = infile.read()
+		last_command = infile.read().strip(0)
 
 	if command != last_command:		
 		functionToCall = input_list[1]
@@ -27,7 +27,7 @@ def state():
 
 	# Store command in text file
 	with open('last_command.txt','w') as outfile:
-		outfile.write("command: {0}".format(command))
+		outfile.write("0{0}".format(command))
 
 	return input_list[0], 200
 
