@@ -27,7 +27,7 @@ def state():
 
 	# Store command in text file
 	with open('last_command.txt','w') as outfile:
-		json.dump(command, outfile)
+		outfile.write("{}".format(command))
 
 	return input_list[0], 200
 
