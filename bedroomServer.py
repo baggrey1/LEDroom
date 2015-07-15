@@ -27,7 +27,7 @@ def state():
 
 	# Store command in text file
 	with open('last_command.txt','w') as outfile:
-		outfile.write("{0}".format(command))
+		outfile.write("command: {0}".format(command))
 
 	return input_list[0], 200
 
