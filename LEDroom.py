@@ -96,6 +96,10 @@ def fadeOn():
 		'blue' : 1
 	}
 
+	# define color
+	with open('last_color.txt') as infile:    
+		storedColor = json.load(infile)
+
 	for i in range(1,fadeSteps):
 		for component in storedColor:
 			# set color components for step

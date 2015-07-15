@@ -7,7 +7,7 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 
 options = {
-	'command=on':['Lights on!', boringOn],
+	'command=on':['Lights on!', fadeOn],
 	'command=off':['Lights out!', allOff]
 }
 
@@ -16,9 +16,18 @@ def state():
 	# This route accepts a string as a GET param and turns lights on/off
 	command = request.query_string
 	input_list = options.get(command)
-	functionToCall = input_list[1]
-	functionToCall()
-	print(storedColor)
+	# Read previous command from text file
+	with open('last_command.txt') as infile:    
+		last_command = json.load(infile)
+
+	if command != last_command:		
+		functionToCall = input_list[1]
+		functionToCall()
+		print(storedColor)
+
+	# Store command in text file
+	with open('last_command.txt','w') as outfile:
+		json.dump(command, outfile)
 
 	return input_list[0], 200
 
