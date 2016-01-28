@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask.ext.cors import CORS
 from LEDroom import boringOn, allOff, setColor, fadeOn
 import json
@@ -49,7 +49,7 @@ def last_state():
 		'lastColor': last_color
 	}
 
-	return last_state_obj, 200
+	return jsonify(last_state_obj), 200
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=5555, debug=True)
