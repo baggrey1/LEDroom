@@ -1,5 +1,5 @@
 from flask import Flask
-from flask.ext.socketio import SocketIO
+from flask.ext.socketio import SocketIO, emit
 from LEDroom import setColor
 
 app = Flask(__name__)
