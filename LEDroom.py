@@ -53,11 +53,8 @@ def allOff():
 	strip1.begin()
 	strip2.begin()
 	color = Color(0, 0, 0)
-	print 'turning off'
-	print str(strip1.numPixels())
-	print str(strip2.numPixels())
 
-		# set pixel states for both strips
+	# set pixel states for both strips
 	for i in range(strip1.numPixels()):
 		strip1.setPixelColor(i,color)
 

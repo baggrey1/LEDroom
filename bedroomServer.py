@@ -24,8 +24,7 @@ def state():
 	with open('last_color.txt') as infile:
 		storedColor = json.load(infile)
 
-	if command != last_command:
-		print 'command != last_command'		
+	if command != last_command:	
 		stateToSend = input_list[1]
 		fade(stateToSend)
 
