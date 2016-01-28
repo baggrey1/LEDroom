@@ -27,7 +27,6 @@ def state():
 	if command != last_command:		
 		functionToCall = input_list[1]
 		functionToCall()
-		print(storedColor)
 
 	# Store command in text file
 	with open('last_command.txt','w') as outfile:

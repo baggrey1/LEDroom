@@ -16,11 +16,7 @@ def set_colors(colors):
 	green = int(colors[1]['intensity'])
 	blue = int(colors[2]['intensity'])
 	setColor(red, green, blue)
-	storedColor = {
-		'red':red,
-		'green':green,
-		'blue': blue
-	}
+	storedColor = colors
 	with open('last_color.txt', 'w') as outfile:
 		json.dump(storedColor, outfile)
 
