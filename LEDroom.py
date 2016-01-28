@@ -70,6 +70,10 @@ def allOff():
 
 def setColor(red,green,blue):
 	# this function sets color for all LEDS
+	# initialize strips
+	strip1.begin()
+	strip2.begin()
+
 	color = Color(red, green, blue)
 
 	# set pixel states for both strips
