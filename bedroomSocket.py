@@ -16,7 +16,11 @@ def set_colors(colors):
 	green = int(colors[1]['intensity'])
 	blue = int(colors[2]['intensity'])
 	setColor(red, green, blue)
-	storedColor = colors
+	storedColor = {
+		'red':red,
+		'green':green,
+		'blue': blue
+	}
 	with open('last_color.txt', 'w') as outfile:
 		json.dump(storedColor, outfile)
 
@@ -25,4 +29,4 @@ def slider_disconnect():
     print('Client disconnected')
 
 if __name__ == "__main__":
-	socketio.run(app, host='0.0.0.0')
+	socketio.run(app, host='0.0.0.0', debug=True)

@@ -99,17 +99,9 @@ def fadeOn():
 	# define color
 	with open('last_color.txt') as infile:    
 		storedColor = json.load(infile)
-		red = int(storedColor[0]['intensity'])
-		green = int(storedColor[1]['intensity'])
-		blue = int(storedColor[2]['intensity'])
-		colorComponents = {
-			'red': red,
-			'green': green,
-			'blue': blue
-		}
 
 	for i in range(1,fadeSteps):
-		for component in colorComponents:
+		for component in storedColor:
 			# set color components for step
 			colorStep[component] = int(storedColor[component]*fadeResolution/fadeDuration*i)
 		

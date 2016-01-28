@@ -1,5 +1,1 @@
-[
-	{'name': 'red', 'intensity':175},
-	{'name':'green', 'intensity':150},
-	{'name':'blue', 'intensity':140,}
-]
+{"blue": 180, "green": 195, "red": 210}
