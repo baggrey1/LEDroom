@@ -42,7 +42,7 @@ def last_state():
 		last_command = command_file.read().strip('0')
 
 	with open('last_color.txt') as color_file:
-		last_color = json.load(command_file)
+		last_color = json.load(color_file)
 
 	last_state_obj = {
 		'lastCommand': last_command,
