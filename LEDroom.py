@@ -92,7 +92,7 @@ def fade(state):
 
 	# set fade options in s
 	fadeDuration = .1
-	fadeResolution = .002
+	fadeResolution = .005
 	fadeSteps = int(fadeDuration/fadeResolution)
 
 	# initialize color step:
