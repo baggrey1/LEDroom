@@ -52,4 +52,4 @@ def last_state():
 	return last_state_obj, 200
 
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=5555)
+	app.run(host='0.0.0.0', port=5555, debug=True)
