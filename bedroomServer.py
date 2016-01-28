@@ -3,6 +3,7 @@ from flask.ext.socketio import SocketIO
 from LEDroom import boringOn, allOff, setColor, fadeOn
 import json
 
+
 app = Flask(__name__)
 socketio = SocketIO(app)
 
@@ -19,6 +20,9 @@ def state():
 	# Read previous command from text file
 	with open('last_command.txt') as infile:    
 		last_command = infile.read().strip('0')
+
+	with open('last_color.txt') as infile:
+		storedColor = json.load(infile)
 
 	if command != last_command:		
 		functionToCall = input_list[1]
