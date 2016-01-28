@@ -1,3 +1,8 @@
+from flask import Flask, request, jsonify
+from flask.ext.cors import CORS
+from LEDroom import boringOn, allOff, setColor, fadeOn
+import json
+
 options = {
 	'command=on':['Lights on!', fadeOn],
 	'command=off':['Lights out!', allOff]
