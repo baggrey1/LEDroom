@@ -8,8 +8,8 @@ app = Flask(__name__)
 CORS(app)
 
 options = {
-	'command=on':['Lights on!', fadeOn],
-	'command=off':['Lights out!', allOff]
+	'command=on':['Lights on!', 'on'],
+	'command=off':['Lights out!', 'off']
 }
 
 @app.route('/state/')
@@ -24,9 +24,10 @@ def state():
 	with open('last_color.txt') as infile:
 		storedColor = json.load(infile)
 
-	if command != last_command:		
-		functionToCall = input_list[1]
-		functionToCall()
+	if command != last_command:
+		print 'command != last_command'		
+		stateToSend = input_list[1]
+		fade(stateToSend)
 
 	# Store command in text file
 	with open('last_command.txt','w') as outfile:

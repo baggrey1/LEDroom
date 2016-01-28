@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify
 from flask.ext.cors import CORS
-from LEDroom import boringOn, allOff, setColor, fadeOn
+from LEDroom import boringOn, setColor, fade
 import json
 
 options = {
-	'command=on':['Lights on!', fadeOn],
-	'command=off':['Lights out!', allOff]
+	'command=on':['Lights on!', 'on'],
+	'command=off':['Lights out!', 'off']
 }
 
 def state():
@@ -23,9 +23,8 @@ def state():
 
 	if command != last_command:
 		print 'command != last_command'		
-		functionToCall = input_list[1]
-		print str(functionToCall)
-		functionToCall()
+		stateToSend = input_list[1]
+		fade(stateToSend)
 
 	# Store command in text file
 	with open('last_command.txt','w') as outfile:

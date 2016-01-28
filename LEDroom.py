@@ -83,7 +83,7 @@ def setColor(red,green,blue):
 	strip1.show()
 	strip2.show()
 
-def fadeOn():
+def fade(state):
 	# this function fades the lights on to the stored color
 	# initialize strips
 	strip1.begin()
@@ -101,14 +101,29 @@ def fadeOn():
 		'blue' : 1
 	}
 
+	offColor = {
+		'red': 0,
+		'green': 0,
+		'blue': 0
+	}
+
 	# define color
 	with open('last_color.txt') as infile:    
 		storedColor = json.load(infile)
 
+	if state = 'on':
+		startColor = offColor
+		endColor = storedColor
+
+	else:
+		startColor = storedColor
+		endColor = offColor
+
 	for i in range(1,fadeSteps):
-		for component in storedColor:
+		for component in endColor:
 			# set color components for step
-			colorStep[component] = int(storedColor[component]*fadeResolution/fadeDuration*i)
+			colorComponentDiff = endColor[component]-startColor[component]
+			colorStep[component] = startColor[component] + int(colorComponentDiff*fadeResolution/fadeDuration*i)
 		
 		# instantiate color object
 		print(colorStep)
