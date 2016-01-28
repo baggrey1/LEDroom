@@ -1,1 +1,1 @@
-0command=on
+0command=off
