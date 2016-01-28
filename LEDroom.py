@@ -111,7 +111,7 @@ def fade(state):
 	with open('last_color.txt') as infile:    
 		storedColor = json.load(infile)
 
-	if state = 'on':
+	if state == 'on':
 		startColor = offColor
 		endColor = storedColor
 
