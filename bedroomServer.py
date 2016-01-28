@@ -1,11 +1,11 @@
 from flask import Flask, request
-from flask.ext.socketio import SocketIO
+from flask.ext.cors import CORS
 from LEDroom import boringOn, allOff, setColor, fadeOn
 import json
 
 
 app = Flask(__name__)
-socketio = SocketIO(app)
+CORS(app)
 
 options = {
 	'command=on':['Lights on!', fadeOn],
@@ -35,28 +35,21 @@ def state():
 
 	return input_list[0], 200
 
-@socketio.on('connect')
-def slider_connect():
-    emit('my response', {'data': 'Connected!'})
-    print('Client connected')
+@app.route('/last-state/')
+def last_state():
+	# This route returns the most recent state and color upon GET
+	with open('last_command.txt') as command_file:
+		last_command = command_file.read().strip('0')
 
-@socketio.on('json')
-def set_colors(colors):
-	red = int(colors[0]['intensity'])
-	green = int(colors[1]['intensity'])
-	blue = int(colors[2]['intensity'])
-	setColor(red, green, blue)
-	storedColor = {
-		'red':red,
-		'green':green,
-		'blue': blue
+	with open('last_color.txt') as color_file:
+		last_color = color_file.read().strip('0')
+
+	last_state_obj = {
+		'lastCommand': last_command,
+		'lastColor': last_color
 	}
-	with open('last_color.txt', 'w') as outfile:
-		json.dump(storedColor, outfile)
 
-@socketio.on('disconnect')
-def slider_disconnect():
-    print('Client disconnected')
+	return last_state_obj, 200
 
 if __name__ == "__main__":
-	socketio.run(app, host='0.0.0.0')
+	app.run(host='0.0.0.0', port=5555)
